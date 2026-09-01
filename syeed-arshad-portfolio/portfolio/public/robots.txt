@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://syeedarshad.dev/sitemap.xml
