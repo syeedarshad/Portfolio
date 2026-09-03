@@ -16,6 +16,7 @@ interface Repo {
 }
 
 const GITHUB_USERNAME = "syeedarshad";
+const EXCLUDED_REPOS = ["syeedarshad", "calculator"];
 
 export default function GithubShowcase() {
   const [repos, setRepos] = useState<Repo[] | null>(null);
@@ -23,10 +24,19 @@ export default function GithubShowcase() {
 
   useEffect(() => {
     fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=12`
     )
       .then((res) => (res.ok ? res.json() : Promise.reject()))
-      .then((data) => setRepos(Array.isArray(data) ? data : []))
+      .then((data) => {
+        if (Array.isArray(data)) {
+          const filtered = data
+            .filter((repo: Repo) => !EXCLUDED_REPOS.includes(repo.name.toLowerCase()))
+            .slice(0, 6);
+          setRepos(filtered);
+        } else {
+          setRepos([]);
+        }
+      })
       .catch(() => setFailed(true));
   }, []);
 
@@ -38,7 +48,7 @@ export default function GithubShowcase() {
             <SectionHeading
               eyebrow="GitHub"
               title="Repositories"
-              description="Live from GitHub — update the username in GithubShowcase.tsx to point at your own profile."
+              description="Recent open-source repositories and code projects live from GitHub."
             />
             <a
               href={social.github}
