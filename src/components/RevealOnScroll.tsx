@@ -34,8 +34,8 @@ export default function RevealOnScroll({
     <div
       ref={ref}
       style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
-      className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
       } ${className}`}
     >
       {children}

@@ -4,24 +4,31 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-pad">
+    <section id="skills" className="section-pad border-b border-border bg-bg-surface/20">
       <div className="container-shell">
         <RevealOnScroll>
-          <SectionHeading eyebrow="Technical Skills" title="Tools and fundamentals I work with." />
+          <SectionHeading
+            number="04"
+            eyebrow="CAPABILITIES"
+            title="Technical capabilities &amp; systems."
+            description="Core engineering stack, frameworks, and domain expertise across AI infrastructure, backends, and electronics."
+          />
         </RevealOnScroll>
 
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-14 border-t border-border">
           {skillGroups.map((group, i) => (
-            <RevealOnScroll key={group.category} delay={i * 70}>
-              <div className="card-base p-6 h-full border-l-2 border-l-accent hover:border-l-accent hover:bg-bg-surface/90 group">
-                <h3 className="font-display text-xs uppercase tracking-[0.15em] text-slate-400 mb-4 font-semibold">
-                  {group.category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
+            <RevealOnScroll key={group.category} delay={i * 50}>
+              <div className="py-6 border-b border-border/70 grid md:grid-cols-[240px_1fr] gap-4 md:gap-8 items-start hover:bg-bg-surface/40 transition-colors px-2 sm:px-3 rounded">
+                <div>
+                  <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                    {group.category}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="text-sm px-3 py-1.5 rounded-lg bg-accent/10 border border-accent/20 text-slate-300 hover:bg-accent/20 hover:border-accent/40 hover:shadow-[0_0_12px_rgba(124,58,237,0.2)] transition-all duration-200 font-body"
+                      className="font-mono text-xs text-text-secondary bg-bg-surface border border-border px-2.5 py-1 rounded hover:border-border-hover hover:text-text-primary transition-colors"
                     >
                       {skill}
                     </span>

@@ -1,6 +1,6 @@
-# Syeed Arshad — Portfolio
+# Arshad Syeed — Portfolio
 
-Personal portfolio for **Syeed Arshad** — AI Native Developer, Software Developer, and Full-Stack Developer. Built with React, TypeScript, Vite, and Tailwind CSS.
+Personal portfolio for **Arshad Syeed** — AI Native Developer, Software Developer, and Full-Stack Developer. Built with React, TypeScript, Vite, and Tailwind CSS.
 
 ## Tech Stack
 

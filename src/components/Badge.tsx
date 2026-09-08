@@ -1,16 +1,22 @@
 interface BadgeProps {
   children: React.ReactNode;
-  tone?: "default" | "violet";
+  tone?: "default" | "accent" | "violet";
+  className?: string;
 }
 
-export default function Badge({ children, tone = "default" }: BadgeProps) {
+export default function Badge({
+  children,
+  tone = "default",
+  className = "",
+}: BadgeProps) {
   const tones = {
-    default: "bg-slate-800 border-slate-700 text-slate-300 hover:border-slate-600",
-    violet: "bg-accent/10 border-accent/20 text-accent font-medium",
+    default: "bg-bg-surface border-border text-text-secondary hover:border-border-hover",
+    accent: "bg-accent/10 border-accent/30 text-accent font-medium",
+    violet: "bg-accent/10 border-accent/30 text-accent font-medium", // backward compatible alias
   };
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs transition-colors duration-200 ${tones[tone]}`}
+      className={`inline-flex items-center rounded px-2 py-0.5 text-xs font-mono border transition-colors duration-150 ${tones[tone]} ${className}`}
     >
       {children}
     </span>

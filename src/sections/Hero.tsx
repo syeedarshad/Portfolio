@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { profile } from "@/data/profile";
 import RevealOnScroll from "@/components/RevealOnScroll";
-
-const stack = ["Python", "FastAPI", "React", "RAG", "LLMs", "PostgreSQL"];
+import { ArrowUpRight } from "lucide-react";
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -10,7 +9,7 @@ export default function Hero() {
   useEffect(() => {
     const id = setInterval(() => {
       setRoleIndex((i) => (i + 1) % profile.roles.length);
-    }, 2800);
+    }, 3200);
     return () => clearInterval(id);
   }, []);
 
@@ -18,166 +17,135 @@ export default function Hero() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="hero" className="relative pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden">
-      {/* Circuit node animation background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <svg
-          className="absolute inset-0 w-full h-full opacity-10"
-          viewBox="0 0 1200 800"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <defs>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-              <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
+    <section id="hero" className="relative pt-32 pb-20 md:pt-44 md:pb-28 border-b border-border">
+      <div className="container-shell">
+        <div className="grid lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-16 items-start">
+          {/* Left Editorial Content */}
+          <div>
+            <RevealOnScroll>
+              <div className="inline-flex items-center gap-2 mb-6 text-xs font-mono tracking-wider uppercase text-text-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                <span>{profile.name}</span>
+                <span className="text-border">/</span>
+                <span className="text-text-secondary">Systems &amp; Software</span>
+              </div>
+            </RevealOnScroll>
 
-          {/* Animated connecting lines */}
-          <g stroke="#7C3AED" strokeWidth="1" opacity="0.4">
-            <line
-              x1="150" y1="200" x2="400" y2="300"
-              className="animate-circuitFlow"
-            />
-            <line
-              x1="400" y1="300" x2="800" y2="150"
-              className="animate-circuitFlow"
-              style={{ animationDelay: "1s" }}
-            />
-            <line
-              x1="800" y1="150" x2="1000" y2="500"
-              className="animate-circuitFlow"
-              style={{ animationDelay: "2s" }}
-            />
-            <line
-              x1="1000" y1="500" x2="600" y2="650"
-              className="animate-circuitFlow"
-              style={{ animationDelay: "1.5s" }}
-            />
-          </g>
+            <RevealOnScroll delay={60}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary leading-[1.08] font-display">
+                Building AI
+                <span className="block text-accent font-medium mt-1">
+                  infrastructure.
+                </span>
+              </h1>
+            </RevealOnScroll>
 
-          {/* Animated nodes */}
-          <g fill="#7C3AED" opacity="0.6" filter="url(#glow)">
-            <circle cx="150" cy="200" r="4" className="animate-glowPulse" />
-            <circle
-              cx="400" cy="300" r="4"
-              className="animate-glowPulse"
-              style={{ animationDelay: "0.5s" }}
-            />
-            <circle
-              cx="800" cy="150" r="4"
-              className="animate-glowPulse"
-              style={{ animationDelay: "1s" }}
-            />
-            <circle
-              cx="1000" cy="500" r="4"
-              className="animate-glowPulse"
-              style={{ animationDelay: "1.5s" }}
-            />
-            <circle
-              cx="600" cy="650" r="4"
-              className="animate-glowPulse"
-              style={{ animationDelay: "2s" }}
-            />
-          </g>
-        </svg>
-      </div>
+            <RevealOnScroll delay={120}>
+              <div className="mt-5 flex items-center gap-3 text-sm sm:text-base text-text-secondary font-mono">
+                <span className="text-text-muted text-xs uppercase tracking-wider">Role</span>
+                <span className="text-border">/</span>
+                <span className="text-text-primary transition-opacity duration-300">
+                  {profile.roles[roleIndex]}
+                </span>
+              </div>
+            </RevealOnScroll>
 
-      <div className="container-shell grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center relative z-10">
-        <div>
-          <RevealOnScroll>
-            <p className="eyebrow mb-5">Syeed Arshad</p>
-          </RevealOnScroll>
+            <RevealOnScroll delay={180}>
+              <p className="mt-6 text-text-secondary text-base sm:text-lg leading-relaxed max-w-xl font-body">
+                {profile.tagline}
+              </p>
+            </RevealOnScroll>
 
-          <RevealOnScroll delay={80}>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold leading-[1.0] text-slate-100">
-              Building AI{" "}
-              <span className="block text-accent">infrastructure.</span>
-            </h1>
-          </RevealOnScroll>
+            <RevealOnScroll delay={240}>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <button
+                  onClick={() => scrollTo("#projects")}
+                  className="btn-primary"
+                >
+                  Selected Work
+                </button>
+                <a
+                  href={profile.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                >
+                  Resume <ArrowUpRight size={14} className="opacity-70" />
+                </a>
+                <button
+                  onClick={() => scrollTo("#contact")}
+                  className="btn-secondary"
+                >
+                  Get in Touch
+                </button>
+              </div>
+            </RevealOnScroll>
+          </div>
 
+          {/* Right Professional Identity Block */}
           <RevealOnScroll delay={150}>
-            <div className="mt-6 h-8 flex items-center">
-              <span className="text-lg md:text-xl font-body text-slate-400 transition-all duration-500 animate-fadeIn">
-                {profile.roles[roleIndex]}
-              </span>
-            </div>
-          </RevealOnScroll>
-
-          <RevealOnScroll delay={220}>
-            <p className="mt-6 text-slate-400 text-base md:text-lg leading-relaxed max-w-lg font-body">
-              {profile.tagline}
-            </p>
-          </RevealOnScroll>
-
-          <RevealOnScroll delay={300}>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => scrollTo("#projects")}
-                className="btn-primary"
-              >
-                Explore Work
-              </button>
-              <a
-                href={profile.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                Resume
-              </a>
-              <button onClick={() => scrollTo("#contact")} className="btn-secondary">
-                Get in Touch
-              </button>
-            </div>
-          </RevealOnScroll>
-        </div>
-
-        <RevealOnScroll delay={200}>
-          <div className="relative mx-auto max-w-sm">
-            <div
-              className="absolute -inset-6 bg-accent/10 blur-3xl rounded-full animate-glowPulse"
-              aria-hidden
-            />
-            <div className="relative card-base p-6">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="h-16 w-16 rounded-2xl overflow-hidden border border-bg-border bg-bg-elevated shrink-0">
+            <div className="bg-bg-surface border border-border rounded-lg p-6 max-w-md lg:ml-auto">
+              <div className="flex items-start gap-4 pb-5 border-b border-border">
+                <div className="h-16 w-16 rounded-md overflow-hidden border border-border shrink-0 bg-bg-elevated">
                   <img
                     src={profile.profileImage}
                     alt={profile.name}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover grayscale-[20%]"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = "none";
                     }}
                   />
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-slate-100">{profile.name}</p>
-                  <p className="text-xs text-slate-500">{profile.education}</p>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h2 className="text-sm font-semibold text-text-primary truncate font-display">
+                      {profile.name}
+                    </h2>
+                  </div>
+                  <p className="text-xs text-text-secondary mt-0.5 font-mono">
+                    ECE &middot; Class of 2027
+                  </p>
+                  <p className="text-[11px] text-text-muted mt-1 leading-tight">
+                    Vel Tech R&amp;D Institute &middot; Chennai
+                  </p>
                 </div>
               </div>
 
-              <div className="rounded-xl bg-bg/60 border border-bg-border p-4">
-                <p className="text-[11px] uppercase tracking-widest text-slate-500 mb-3 font-body">
-                  Currently building with
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {stack.map((s) => (
-                    <span
-                      key={s}
-                      className="text-xs px-2.5 py-1 rounded-full bg-white/[0.04] border border-bg-border text-slate-400 font-body"
-                    >
-                      {s}
-                    </span>
-                  ))}
+              {/* Technical Profile Breakdown */}
+              <div className="py-4 space-y-3 border-b border-border text-xs font-mono">
+                <div className="flex justify-between items-baseline gap-4">
+                  <span className="text-text-muted text-[11px] uppercase tracking-wider">Focus</span>
+                  <span className="text-text-secondary text-right">RAG &amp; AI Systems</span>
+                </div>
+                <div className="flex justify-between items-baseline gap-4">
+                  <span className="text-text-muted text-[11px] uppercase tracking-wider">Backend</span>
+                  <span className="text-text-secondary text-right">Python, FastAPI, WebSockets</span>
+                </div>
+                <div className="flex justify-between items-baseline gap-4">
+                  <span className="text-text-muted text-[11px] uppercase tracking-wider">Hardware</span>
+                  <span className="text-text-secondary text-right">Signaling &amp; Embedded</span>
+                </div>
+                <div className="flex justify-between items-baseline gap-4">
+                  <span className="text-text-muted text-[11px] uppercase tracking-wider">Status</span>
+                  <span className="text-emerald-400 inline-flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    Open for roles
+                  </span>
                 </div>
               </div>
+
+              {/* Core Stack inline text list */}
+              <div className="pt-4">
+                <p className="text-[11px] font-mono uppercase tracking-wider text-text-muted mb-2">
+                  Primary Stack
+                </p>
+                <p className="text-xs text-text-secondary leading-relaxed font-mono">
+                  Python &middot; FastAPI &middot; React &middot; TypeScript &middot; FAISS &middot; PostgreSQL
+                </p>
+              </div>
             </div>
-          </div>
-        </RevealOnScroll>
+          </RevealOnScroll>
+        </div>
       </div>
     </section>
   );

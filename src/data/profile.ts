@@ -9,7 +9,7 @@ export interface Profile {
 }
 
 export const profile: Profile = {
-  name: "Syeed Arshad",
+  name: "Arshad Syeed",
   roles: ["AI Systems Developer", "Full-Stack Developer", "Software Engineer"],
   tagline:
     "Building AI-powered, full-stack software — RAG pipelines, multi-agent systems, and production-style backends in Python and React.",

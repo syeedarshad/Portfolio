@@ -1,65 +1,159 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * {
-    @apply border-bg-border;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply bg-bg text-slate-100 font-body antialiased;
-    background-image: radial-gradient(circle at 15% -10%, rgba(124, 58, 237, 0.05), transparent 40%),
-      radial-gradient(circle at 85% 0%, rgba(124, 58, 237, 0.03), transparent 35%);
-    background-attachment: fixed;
-  }
-  ::selection {
-    background: rgba(124, 58, 237, 0.4);
-    color: #fff;
-  }
-  :focus-visible {
-    outline: 2px solid #7C3AED;
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-  h1, h2, h3, h4 {
-    @apply font-display tracking-tight;
-  }
+* {
+  border-color: #2A313B;
 }
 
-@layer components {
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0E1116;
+  color: #F2F0EA;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(214, 168, 95, 0.25);
+  color: #F2F0EA;
+}
+
+:focus-visible {
+  outline: 1.5px solid #D6A85F;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Geist", "Inter", sans-serif;
+  letter-spacing: -0.02em;
+  color: #F2F0EA;
+}
+
+.container-shell {
+  width: 100%;
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
   .container-shell {
-    @apply mx-auto w-full max-w-6xl px-6 md:px-10;
-  }
-  .glass-panel {
-    @apply bg-bg-surface/70 backdrop-blur-xl border border-bg-border shadow-glass;
-  }
-  .eyebrow {
-    @apply font-body text-xs tracking-[0.2em] uppercase text-slate-400 font-semibold;
-  }
-  .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-full bg-accent text-white font-medium px-6 py-2.5 text-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
-    box-shadow: 0 0 24px rgba(124, 58, 237, 0.2);
-  }
-  .btn-primary:hover {
-    box-shadow: 0 0 32px rgba(124, 58, 237, 0.4);
-  }
-  .btn-secondary {
-    @apply inline-flex items-center gap-2 rounded-full bg-transparent border border-bg-border text-slate-100 font-medium px-6 py-2.5 text-sm transition-all duration-300 hover:border-accent/40 hover:bg-accent/5 hover:-translate-y-0.5 active:translate-y-0;
-  }
-  .card-base {
-    @apply glass-panel rounded-xl2 transition-all duration-300;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
-@layer utilities {
-  .section-pad {
-    @apply py-20 md:py-28;
+@media (min-width: 1024px) {
+  .container-shell {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
+}
+
+.section-label {
+  font-family: "Geist Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #D6A85F;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 6px;
+  background-color: #D6A85F;
+  color: #0E1116;
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  transition: background-color 150ms ease;
+}
+
+.btn-primary:hover {
+  background-color: #E2BB78;
+}
+
+.btn-primary:active {
+  background-color: #D6A85F;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 6px;
+  background-color: transparent;
+  border: 1px solid #2A313B;
+  color: #F2F0EA;
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.btn-secondary:hover {
+  background-color: #151A21;
+  border-color: #3B4452;
+}
+
+.btn-secondary:active {
+  background-color: #1D242D;
+}
+
+.card-editorial {
+  background-color: #151A21;
+  border: 1px solid #2A313B;
+  border-radius: 8px;
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.tech-tag {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 4px;
+  background-color: #151A21;
+  border: 1px solid #2A313B;
+  color: #A6ADB8;
+  transition: border-color 150ms ease;
+}
+
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.border-hairline {
+  border-color: #2A313B;
 }
 
 @media (prefers-reduced-motion: reduce) {
