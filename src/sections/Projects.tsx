@@ -10,8 +10,8 @@ export default function Projects() {
         <RevealOnScroll>
           <SectionHeading
             number="03"
-            eyebrow="WORK"
-            title="Selected work."
+            eyebrow="PROJECTS"
+            title="Selected projects."
             description="Systems spanning Retrieval-Augmented Generation, desktop productivity architectures, and autonomous workflows."
           />
         </RevealOnScroll>

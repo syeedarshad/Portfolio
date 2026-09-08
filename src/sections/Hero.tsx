@@ -62,7 +62,7 @@ export default function Hero() {
                   onClick={() => scrollTo("#projects")}
                   className="btn-primary"
                 >
-                  Selected Work
+                  View Projects
                 </button>
                 <a
                   href={profile.resumeUrl}
@@ -103,7 +103,7 @@ export default function Hero() {
                     </h2>
                   </div>
                   <p className="text-xs text-text-secondary mt-0.5 font-mono">
-                    ECE &middot; Class of 2027
+                    ECE
                   </p>
                   <p className="text-[11px] text-text-muted mt-1 leading-tight">
                     Vel Tech R&amp;D Institute &middot; Chennai
